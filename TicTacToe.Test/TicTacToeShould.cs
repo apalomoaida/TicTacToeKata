@@ -27,6 +27,17 @@ namespace TicTacToeKata.Test {
             game.Move(position1);
             game.Move(position2);
             game.GetPosition(position2).Should().Be("0");
+        }  
+        [Test]
+        public void do_third_movement_with_X() {
+            var game = new TicTacToe();
+            var position1 = new Position(0, 0);
+            var position2 = new Position(0, 1);
+            var position3 = new Position(0, 2);
+            game.Move(position1);
+            game.Move(position2);
+            game.Move(position3);
+            game.GetPosition(position3).Should().Be("X");
         }
     }
 }
