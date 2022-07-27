@@ -2,14 +2,13 @@
 
 public class TicTacToe {
     private bool _isFirstPlayer = true;
-    private string?[,] _board = new string[3, 3];
-    private const string _firstPlayerToken = "X";
-    private const string _secondPlayerToken = "0";
-    private int movementCount = 0;
+    private readonly string?[,] _board = new string[3, 3];
+    private const string FirstPlayerToken = "X";
+    private const string SecondPlayerToken = "0";
+    private int _movementCount;
 
-    public bool IsBoardEmpty()
-    {
-        return movementCount == 0;
+    public bool IsBoardEmpty() {
+        return _movementCount == 0;
     }
 
     public string Move(Position position) {
@@ -23,16 +22,16 @@ public class TicTacToe {
     }
 
     private string GetStatusMessage() {
-        ++movementCount;
+        ++_movementCount;
         if (WinByHorizontalLine() || WinByVerticalLine() || WinByDiagionalLine())
             return GetCurrentPLayerToken() + " wins";
-        if (movementCount == 9)
+        if (_movementCount == 9)
             return "Draw";
         return "Next movement";
     }
 
     public string GetCurrentPLayerToken() {
-        return _isFirstPlayer ? _firstPlayerToken : _secondPlayerToken;
+        return _isFirstPlayer ? FirstPlayerToken : SecondPlayerToken;
     }
 
     public string? GetPosition(Position position) {
