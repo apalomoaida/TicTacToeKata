@@ -35,19 +35,19 @@ public class TicTacToe {
         return _board[position.x, position.y];
     }
     private bool WinByVerticalLine() {
-        return (_board[0, 0] == _board[1, 0] && _board[0, 0] == _board[2, 0]) ||
-               (_board[0, 1] == _board[1, 1] && _board[0, 1] == _board[2, 1]) ||
-               (_board[0, 2] == _board[1, 2] && _board[0, 2] == _board[2, 2]);
+        return (_board[0, 0] != null && _board[0, 0] == _board[1, 0] && _board[0, 0] == _board[2, 0]) ||
+               (_board[0, 1] != null && _board[0, 1] == _board[1, 1] && _board[0, 1] == _board[2, 1]) ||
+               (_board[0, 2] != null && _board[0, 2] == _board[1, 2] && _board[0, 2] == _board[2, 2]);
     }
 
     private bool WinByDiagionalLine() {
-        return (_board[0, 0] == _board[1, 1] && _board[0, 0] == _board[2, 2]) ||
-               (_board[0, 2] == _board[1, 1] && _board[0, 2] == _board[2, 0]);
+        return (_board[0, 0] != null && _board[0, 0] == _board[1, 1] && _board[0, 0] == _board[2, 2]) ||
+               (_board[0, 2] != null && _board[0, 2] == _board[1, 1] && _board[0, 2] == _board[2, 0]);
     }
 
     private bool WinByHorizontalLine() {
-        return (_board[0, 0] == _board[0, 1] && _board[0, 0] == _board[0, 2]) ||
-               (_board[1, 0] == _board[1, 1] && _board[1, 0] == _board[1, 2]) ||
-               (_board[2, 0] == _board[2, 1] && _board[2, 0] == _board[2, 2]);
+        return (_board[0, 0] != null && _board[0, 0] == _board[0, 1] && _board[0, 0] == _board[0, 2]) ||
+               (_board[1, 0] != null && _board[1, 0] == _board[1, 1] && _board[1, 0] == _board[1, 2]) ||
+               (_board[2, 0] != null && _board[2, 0] == _board[2, 1] && _board[2, 0] == _board[2, 2]);
     }
 }
