@@ -1,12 +1,16 @@
 ﻿namespace TicTacToeGame;
 
 public class TicTacToe {
-    public bool IsBoardEmpty = true;
     private bool _isFirstPlayer = true;
-    private string[,] _board = new string[3, 3];
+    private string?[,] _board = new string[3, 3];
     private const string _firstPlayerToken = "X";
     private const string _secondPlayerToken = "0";
     private int movementCount = 0;
+
+    public bool IsBoardEmpty()
+    {
+        return movementCount == 0;
+    }
 
     public string Move(Position position) {
         if (GetPosition(position) != null) {
@@ -31,7 +35,7 @@ public class TicTacToe {
         return _isFirstPlayer ? _firstPlayerToken : _secondPlayerToken;
     }
 
-    public object GetPosition(Position position) {
+    public string? GetPosition(Position position) {
         return _board[position.x, position.y];
     }
     private bool WinByVerticalLine() {

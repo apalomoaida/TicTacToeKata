@@ -10,7 +10,7 @@ namespace TicTacToeKata.Test {
         [Test]
         public void begin_with_empty_board_game() {
             var game = new TicTacToe();
-            game.IsBoardEmpty.Should().BeTrue();
+            game.IsBoardEmpty().Should().BeTrue();
         }
         [Test]
         public void do_first_movement_whith_x() {
