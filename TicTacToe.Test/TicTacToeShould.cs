@@ -38,6 +38,11 @@ namespace TicTacToeKata.Test {
             game.Move(position2);
             game.Move(position3);
             game.GetPosition(position3).Should().Be("X");
+        }   
+        [Test]
+        public void return_current_active_player() {
+            var game = new TicTacToe();
+            game.GetCurrentPLayerToken().Should().Be("X");
         }
     }
 }

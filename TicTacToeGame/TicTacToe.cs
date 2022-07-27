@@ -12,7 +12,7 @@ public class TicTacToe {
         IsFirstPlayer = !IsFirstPlayer;
     }
 
-    private string GetCurrentPLayerToken() {
+    public string GetCurrentPLayerToken() {
         return IsFirstPlayer ? firstPlayerToken : secondPlayerToken;
     }
 
