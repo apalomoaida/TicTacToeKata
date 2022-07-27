@@ -27,7 +27,7 @@ namespace TicTacToeKata.Test {
             game.Move(position1);
             game.Move(position2);
             game.GetPosition(position2).Should().Be("0");
-        }  
+        }
         [Test]
         public void do_third_movement_with_X() {
             var game = new TicTacToe();
@@ -38,11 +38,20 @@ namespace TicTacToeKata.Test {
             game.Move(position2);
             game.Move(position3);
             game.GetPosition(position3).Should().Be("X");
-        }   
+        }
         [Test]
         public void return_current_active_player() {
             var game = new TicTacToe();
             game.GetCurrentPLayerToken().Should().Be("X");
+        }
+        [Test]
+        public void prevend_movement_in_same_position() {
+            var game = new TicTacToe();
+            var position1 = new Position(0, 0);
+            var position2 = new Position(0, 0);
+            game.Move(position1);
+            var move = () => game.Move(position2);
+            move.Should().Throw<ArgumentException>().And.Message.Should().Be("This field is already taken");
         }
     }
 }

@@ -8,6 +8,9 @@ public class TicTacToe {
     private const string secondPlayerToken = "0";
 
     public void Move(Position position) {
+        if (GetPosition(position) != null) {
+            throw new ArgumentException("This field is already taken");
+        }
         Board[position.x, position.y] = GetCurrentPLayerToken();
         IsFirstPlayer = !IsFirstPlayer;
     }
