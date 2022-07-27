@@ -11,12 +11,13 @@ namespace TicTacToeKata.Test {
         public void begin_with_empty_board_game() {
             var game = new TicTacToe();
             game.IsBoardEmpty.Should().BeTrue();
-        }  
+        }
         [Test]
         public void do_first_movement_whith_x() {
             var game = new TicTacToe();
-            game.Move(new Position(0, 0));
-            game.Board[0,0].Should().Be("X");
+            var position = new Position(0, 0);
+            game.Move(position);
+            game.GetPosition(position).Should().Be("X");
         }
     }
 }
