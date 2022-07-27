@@ -53,5 +53,15 @@ namespace TicTacToeKata.Test {
             var move = () => game.Move(position2);
             move.Should().Throw<ArgumentException>().And.Message.Should().Be("This field is already taken");
         }
+        [Test]
+        public void win_if_three_in_a_row() {
+            var game = new TicTacToe();
+            game.Move(new Position(0, 0));
+            game.Move(new Position(1, 0));
+            game.Move(new Position(0, 1));
+            game.Move(new Position(2, 0));
+            game.Move(new Position(0, 2)).Should().Be("X wins");
+
+        }
     }
 }

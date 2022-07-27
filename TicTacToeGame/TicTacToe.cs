@@ -1,25 +1,48 @@
 ﻿namespace TicTacToeGame;
 
 public class TicTacToe {
-    private bool IsFirstPlayer = true;
-    private string[,] Board = new string[3, 3];
     public bool IsBoardEmpty = true;
-    private const string firstPlayerToken = "X";
-    private const string secondPlayerToken = "0";
+    private bool _isFirstPlayer = true;
+    private string[,] _board = new string[3, 3];
+    private const string _firstPlayerToken = "X";
+    private const string _secondPlayerToken = "0";
 
-    public void Move(Position position) {
+    public string Move(Position position) {
         if (GetPosition(position) != null) {
             throw new ArgumentException("This field is already taken");
         }
-        Board[position.x, position.y] = GetCurrentPLayerToken();
-        IsFirstPlayer = !IsFirstPlayer;
+        _board[position.x, position.y] = GetCurrentPLayerToken();
+        var message = checkWinner();
+        _isFirstPlayer = !_isFirstPlayer;
+        return message;
+    }
+
+    private string checkWinner() {
+        if (
+            //lineas horizontales
+               _board[0, 0] == _board[0, 1] && _board[0, 0] == _board[0, 2]
+            || _board[1, 0] == _board[1, 1] && _board[1, 0] == _board[1, 2]
+            || _board[2, 0] == _board[2, 1] && _board[2, 0] == _board[2, 2]
+            //diagonales
+            || _board[0, 0] == _board[1, 1] && _board[0, 0] == _board[2, 2]
+            || _board[0, 2] == _board[1, 1] && _board[0, 2] == _board[2, 0] 
+            //lineas verticales
+            || _board[0, 0] == _board[1, 0] && _board[0, 0] == _board[2, 0]
+            || _board[0, 1] == _board[1, 1] && _board[0, 1] == _board[2, 1]
+            || _board[0, 2] == _board[1, 2] && _board[0, 2] == _board[2, 2]
+            
+            ) {
+            return GetCurrentPLayerToken() + " wins";
+        }
+
+        return "";
     }
 
     public string GetCurrentPLayerToken() {
-        return IsFirstPlayer ? firstPlayerToken : secondPlayerToken;
+        return _isFirstPlayer ? _firstPlayerToken : _secondPlayerToken;
     }
 
-    public object GetPosition(Position movement) {
-        return Board[movement.x, movement.y];
+    public object GetPosition(Position position) {
+        return _board[position.x, position.y];
     }
 }
