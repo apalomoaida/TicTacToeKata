@@ -4,8 +4,8 @@ public class TicTacToe {
     private bool IsFirstPlayer = true;
     private string[,] Board = new string[3, 3];
     public bool IsBoardEmpty = true;
-    public const string firstPlayerToken = "X";
-    public const string secondPlayerToken = "0";
+    public const string FirstPlayerToken = "X";
+    public const string SecondPlayerToken = "0";
 
     public void Move(Position position) {
         Board[position.x, position.y] = GetCurrentPLayerToken();
@@ -13,7 +13,7 @@ public class TicTacToe {
     }
 
     private string GetCurrentPLayerToken() {
-        return IsFirstPlayer ? firstPlayerToken : secondPlayerToken;
+        return IsFirstPlayer ? FirstPlayerToken : SecondPlayerToken;
     }
 
     public object GetPosition(Position movement) {
