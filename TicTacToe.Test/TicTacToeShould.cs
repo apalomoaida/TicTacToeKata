@@ -61,7 +61,19 @@ namespace TicTacToeKata.Test {
             game.Move(new Position(0, 1));
             game.Move(new Position(2, 0));
             game.Move(new Position(0, 2)).Should().Be("X wins");
-
+        }  
+        [Test]
+        public void draw_if_all_fields_are_taken() {
+            var game = new TicTacToe();
+            game.Move(new Position(0, 0));
+            game.Move(new Position(0, 1));
+            game.Move(new Position(0, 2));
+            game.Move(new Position(1, 0));
+            game.Move(new Position(1, 1));
+            game.Move(new Position(1, 2));
+            game.Move(new Position(2, 1));
+            game.Move(new Position(2, 0));
+            game.Move(new Position(2, 2)).Should().Be("Draw");
         }
     }
 }
